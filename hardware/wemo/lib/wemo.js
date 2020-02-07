@@ -476,6 +476,7 @@ WeMoNG.prototype.parseEvent = function parseEvent(evt) {
 
         def.resolve(msg);
       } else {
+        def.resolve(prop);
         console.log("unhandled wemo event type \n%s", util.inspect(prop, {depth:null}));
       }
     } else {
