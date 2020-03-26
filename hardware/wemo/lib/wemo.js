@@ -261,7 +261,7 @@ WeMoNG.prototype.get = function get(deviceID) {
   return this.devices[deviceID];
 }
 
-WeMoNG.prototype.toggleSocket = function toggleSocket(socket, on) {
+WeMoNG.prototype.toggleSocket = function toggleSocket(socket, on, msg) {
   var postoptions = {
     host: socket.ip,
     port: socket.port,
@@ -295,6 +295,7 @@ WeMoNG.prototype.toggleSocket = function toggleSocket(socket, on) {
       postbodyheader,
       '<u:SetBinaryState xmlns:u="urn:Belkin:service:basicevent:1">',
       '<BinaryState>%s</BinaryState>',
+	  (typeof msg.payload.brightness !== 'undefined' ? '<brightness>' + msg.payload.brightness + '</brightness>' : ''),
       '</u:SetBinaryState>',
       postbodyfooter
     ].join('\n');

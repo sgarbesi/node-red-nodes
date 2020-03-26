@@ -280,12 +280,12 @@ module.exports = function(RED) {
 
             if (dev.type == 'socket') {
                 //console.log("socket");
-                wemo.toggleSocket(dev, on);
+                wemo.toggleSocket(dev, on, msg);
             } else if (dev.type === 'light') {
-                wemo.setStatus(dev,capability, on);
+                wemo.setStatus(dev,capability, on, msg);
             } else {
                 //console.log('group');
-                wemo.setStatus(dev, capability, on);
+                wemo.setStatus(dev, capability, on, msg);
             }
         });
     };
